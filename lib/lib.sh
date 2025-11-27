@@ -6,7 +6,7 @@ set -e
 #                                                                                    #
 # Project 'pterodactyl-installer'                                                    #
 #                                                                                    #
-# Copyright (C) 2018 - 2025, Vilhelm Prytz, <vilhelm@prytznet.se>                    #
+# Copyright (C) 2018 - 2026, Vilhelm Prytz, Damian Bakker                            #
 #                                                                                    #
 #   This program is free software: you can redistribute it and/or modify             #
 #   it under the terms of the GNU General Public License as published by             #
@@ -21,10 +21,10 @@ set -e
 #   You should have received a copy of the GNU General Public License                #
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.           #
 #                                                                                    #
-# https://github.com/pterodactyl-installer/pterodactyl-installer/blob/master/LICENSE #
+# https://github.com/DamianBakker/pterodactyl-installer/blob/master/LICENSE          #
 #                                                                                    #
 # This script is not associated with the official Pterodactyl Project.               #
-# https://github.com/pterodactyl-installer/pterodactyl-installer                     #
+# https://github.com/DamianBakker/pterodactyl-installer/                             #
 #                                                                                    #
 ######################################################################################
 
@@ -52,7 +52,7 @@ export SUPPORTED=false
 export PANEL_DL_URL="https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz"
 export WINGS_DL_BASE_URL="https://github.com/pterodactyl/wings/releases/latest/download/wings_linux_"
 export MARIADB_URL="https://downloads.mariadb.com/MariaDB/mariadb_repo_setup"
-export GITHUB_BASE_URL=${GITHUB_BASE_URL:-"https://raw.githubusercontent.com/pterodactyl-installer/pterodactyl-installer"}
+export GITHUB_BASE_URL=${GITHUB_BASE_URL:-"https://raw.githubusercontent.com/DamianBakker/pterodactyl-installer"}
 export GITHUB_URL="$GITHUB_BASE_URL/$GITHUB_SOURCE"
 
 # Colors
@@ -124,10 +124,10 @@ welcome() {
   print_brake 70
   output "Pterodactyl panel installation script @ $SCRIPT_RELEASE"
   output ""
-  output "Copyright (C) 2018 - 2025, Vilhelm Prytz, <vilhelm@prytznet.se>"
-  output "https://github.com/pterodactyl-installer/pterodactyl-installer"
+  output "Copyright (C) 2018 - 2026, Damian Bakker, Vilhelm Prytz"
+  output "https://github.com/DamianBakker/pterodactyl-installer"
   output ""
-  output "This script is not associated with the official Pterodactyl Project."
+  output "This script is not associated with the official Pterodactyl Project. But to Protexfusion.com"
   output ""
   output "Running $OS version $OS_VER."
   if [ "$1" == "panel" ]; then
