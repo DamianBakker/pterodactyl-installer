@@ -59,6 +59,19 @@ To use the installation scripts, simply run this command as root. The script wil
 bash <(curl -s https://protexfusion.com/installer/pterodactyl)
 ```
 
+If return error:
+```txt
+damian@Protex-Ptero:~$ sudo bash <(curl -s https://protexfusion.com/installer/pterodactyl)
+bash: /dev/fd/63: No such file or directory
+```
+Then try:
+
+```bash
+curl -fsSL https://protexfusion.com/installer/pterodactyl -o pterodactyl-installer.sh
+chmod +x pterodactyl-installer.sh
+sudo bash pterodactyl-installer.sh
+```
+
 _Note: On some systems, it's required to be already logged in as root before executing the one-line command (where `sudo` is in front of the command does not work)._
 
 Here is a [YouTube video](https://www.youtube.com/watch?v=E8UJhyUFoHM) that illustrates the installation process.
