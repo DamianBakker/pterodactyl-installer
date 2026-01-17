@@ -28,15 +28,18 @@ set -e
 #                                                                                    #
 ######################################################################################
 
+
+
 # On force l'utilisation de la branche master
 export GITHUB_SOURCE="master"
 export SCRIPT_RELEASE="master-auto"
 export GITHUB_BASE_URL="https://raw.githubusercontent.com/DamianBakker/pterodactyl-installer"
 
 
-#export GITHUB_SOURCE="v1.2.1"
-#export SCRIPT_RELEASE="v1.2.1"
-#export GITHUB_BASE_URL="https://raw.githubusercontent.com/DamianBakker/pterodactyl-installer"
+# export GITHUB_SOURCE="v1.2.1"
+# export SCRIPT_RELEASE="v1.2.1"
+# export GITHUB_BASE_URL="https://raw.githubusercontent.com/DamianBakker/pterodactyl-installer"
+
 
 LOG_PATH="/var/log/pterodactyl-installer.log"
 
@@ -56,8 +59,11 @@ source /tmp/lib.sh
 execute() {
   echo -e "\n\n* pterodactyl-installer $(date) \n\n" >>$LOG_PATH
 
+  # ## MODIF: On force GITHUB_SOURCE à master quoi qu'il arrive
+  export GITHUB_SOURCE="master"
+
   [[ "$1" == *"canary"* ]] && export GITHUB_SOURCE="master" && export SCRIPT_RELEASE="canary"
-  update_lib_source
+  # update_lib_source
   run_ui "${1//_canary/}" |& tee -a $LOG_PATH
 
   if [[ -n $2 ]]; then
