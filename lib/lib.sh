@@ -126,6 +126,7 @@ welcome() {
   output ""
   output "Copyright (C) 2018 - 2026, Damian Bakker, Vilhelm Prytz"
   output "https://github.com/DamianBakker/pterodactyl-installer"
+  output "https://protexfusion.com"
   output ""
   output "This script is not associated with the official Pterodactyl Project. But to Protexfusion.com"
   output ""
