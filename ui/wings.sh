@@ -88,9 +88,10 @@ ask_database_external() {
   read -r CONFIRM_DBEXTERNAL
 
   if [[ "$CONFIRM_DBEXTERNAL" =~ [Yy] ]]; then
-    echo -n "* Enter the panel address (blank for any address): "
+    echo -n "* Enter the panel address (blank for any address) or server IP [$SERVER_IP]: "
     read -r CONFIRM_DBEXTERNAL_HOST
-    if [ "$CONFIRM_DBEXTERNAL_HOST" == "" ]; then
+
+    if [ -z "$CONFIRM_DBEXTERNAL_HOST" ]; then
       MYSQL_DBHOST_HOST="%"
     else
       MYSQL_DBHOST_HOST="$CONFIRM_DBEXTERNAL_HOST"
@@ -144,6 +145,13 @@ main() {
 
   ask_database_user
 
+  SERVER_IP=$(curl -s https://ifconfig.me)
+  [ -z "$SERVER_IP" ] && SERVER_IP=$(hostname -I | awk '{print $1}')
+
+  gen_mysql_password() {
+    tr -dc 'A-Za-z0-9' </dev/urandom | head -c 13
+  }
+
   if [ "$CONFIGURE_DBHOST" == true ]; then
     type mysql >/dev/null 2>&1 && HAS_MYSQL=true || HAS_MYSQL=false
 
@@ -157,15 +165,25 @@ main() {
       [[ "$MYSQL_DBHOST_USER" == *"-"* ]] && error "Database user cannot contain hyphens"
     done
 
-    password_input MYSQL_DBHOST_PASSWORD "Database host password: " "Password cannot be empty"
+    RAND_DB_PASS=$(gen_mysql_password)
+
+    password_input MYSQL_DBHOST_PASSWORD \
+      "Database host password (press enter to use generated one): " \
+      "Password cannot be empty" \
+      "$RAND_DB_PASS"
+    
+    output "Generated database password: $MYSQL_DBHOST_PASSWORD"
+
+    
   fi
 
   ask_letsencrypt
 
   if [ "$CONFIGURE_LETSENCRYPT" == true ]; then
     while [ -z "$FQDN" ]; do
-      echo -n "* Set the FQDN to use for Let's Encrypt (node.example.com): "
+      echo -n "* Set the FQDN to use for Let's Encrypt (node.example.com) or server IP [$SERVER_IP]: "
       read -r FQDN
+      [ -z "$FQDN" ] && FQDN="$SERVER_IP"
 
       ASK=false
 
