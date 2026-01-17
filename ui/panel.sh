@@ -160,13 +160,15 @@ main() {
   required_input user_lastname "Last name for the initial admin account: " "Name cannot be empty"
   password_input user_password "Password for the initial admin account: " "Password cannot be empty"
 
+  SERVER_IP=$(curl -s https://ifconfig.me || echo "unknown")
+
   print_brake 72
 
   # set FQDN
   while [ -z "$FQDN" ]; do
-    echo -n "* Set the FQDN of this panel (panel.example.com): "
+    echo -n "* Set the FQDN of this panel (panel.example.com) or server IP [$SERVER_IP]: "
     read -r FQDN
-    [ -z "$FQDN" ] && error "FQDN cannot be empty"
+    [ -z "$FQDN" ] && FQDN="$SERVER_IP"
   done
 
   # Check if SSL is available
