@@ -28,9 +28,15 @@ set -e
 #                                                                                    #
 ######################################################################################
 
-export GITHUB_SOURCE="v1.2.1"
-export SCRIPT_RELEASE="v1.2.1"
+# On force l'utilisation de la branche master
+export GITHUB_SOURCE="master"
+export SCRIPT_RELEASE="master-auto"
 export GITHUB_BASE_URL="https://raw.githubusercontent.com/DamianBakker/pterodactyl-installer"
+
+
+#export GITHUB_SOURCE="v1.2.1"
+#export SCRIPT_RELEASE="v1.2.1"
+#export GITHUB_BASE_URL="https://raw.githubusercontent.com/DamianBakker/pterodactyl-installer"
 
 LOG_PATH="/var/log/pterodactyl-installer.log"
 
