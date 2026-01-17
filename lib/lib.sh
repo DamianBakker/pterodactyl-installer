@@ -122,7 +122,7 @@ welcome() {
   get_latest_versions
 
   print_brake 70
-  output "Pterodactyl.io 3 panel installation script @ $SCRIPT_RELEASE"
+  output "Pterodactyl.io panel installation script @ $SCRIPT_RELEASE"
   output ""
   output "Copyright (C) 2018 - 2026, Damian Bakker, Vilhelm Prytz"
   output "https://github.com/DamianBakker/pterodactyl-installer"
