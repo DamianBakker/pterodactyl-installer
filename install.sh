@@ -31,7 +31,7 @@ set -e
 
 
 # On force l'utilisation de la branche master
-export GITHUB_SOURCE="master"
+export GITHUB_SOURCE="1.2.2"
 export SCRIPT_RELEASE="master-auto"
 export GITHUB_BASE_URL="https://raw.githubusercontent.com/DamianBakker/pterodactyl-installer"
 
